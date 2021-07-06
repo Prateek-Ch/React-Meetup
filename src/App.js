@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+//Use Switch to render only one of the routes and not match it with others too so for rendering atmost one page
+//Use the exact parameter to let it render the path which matches entirely and not just the starting match
+
+import { Route, Switch } from 'react-router-dom';
+
+import AllMeetupsPage from './pages/AllMeetups';
+import FavouritesPage from './pages/Favourites';
+import NewMeetupsPage from './pages/NewMeetups';
+import Layout from './components/layout/Layout';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  //localhost:3000/.....
+
+  return(
+    <Layout>
+     <Switch>
+      <Route path='/' exact>
+        <AllMeetupsPage />
+      </Route>
+
+      <Route path='/new-meetups'>
+        <NewMeetupsPage />
+      </Route>
+
+      <Route path='/favourites'>
+        <FavouritesPage />
+      </Route>
+     </Switch>
+  </Layout>
   );
 }
 
